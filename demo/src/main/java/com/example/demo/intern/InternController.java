@@ -1,9 +1,7 @@
 package com.example.demo.intern;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -23,5 +21,10 @@ public class InternController {
     @GetMapping
     public List<Intern> getInterns() {
         return internService.getInterns();
+    }
+
+    @PostMapping
+    public void addNewIntern(@RequestBody Intern intern) {
+        internService.addNewIntern(intern);
     }
 }
