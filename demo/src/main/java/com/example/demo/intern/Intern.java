@@ -3,6 +3,7 @@ package com.example.demo.intern;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table
@@ -21,25 +22,24 @@ public class Intern {
     private String name;
     private String email;
     private LocalDate startDate;
+    @Transient
     private Integer daysOfWork;
 
     public Intern() {
     }
 
-    public Intern(Long id, String name, String email, LocalDate startDate, Integer daysOfWork) {
+    public Intern(Long id, String name, String email, LocalDate startDate) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.startDate = startDate;
-        this.daysOfWork = daysOfWork;
     }
 
     // Test to see database generating id instead
-    public Intern(String name, String email, LocalDate startDate, Integer daysOfWork) {
+    public Intern(String name, String email, LocalDate startDate) {
         this.name = name;
         this.email = email;
         this.startDate = startDate;
-        this.daysOfWork = daysOfWork;
     }
 
     public Long getId() {
@@ -75,7 +75,7 @@ public class Intern {
     }
 
     public Integer getDaysOfWork() {
-        return daysOfWork;
+        return Period.between(this.startDate, LocalDate.now()).getDays();
     }
 
     public void setDaysOfWork(Integer daysOfWork) {
