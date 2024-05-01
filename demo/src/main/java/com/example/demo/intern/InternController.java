@@ -27,4 +27,9 @@ public class InternController {
     public void addNewIntern(@RequestBody Intern intern) {
         internService.addNewIntern(intern);
     }
+
+    @DeleteMapping(path = "{internId}")
+    public void deleteIntern(@PathVariable("internId") Long internId) {
+        internService.deleteIntern(internId);
+    }
 }

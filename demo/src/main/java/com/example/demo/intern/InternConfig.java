@@ -16,12 +16,18 @@ public class InternConfig {
         return args -> {
             Intern gleezell = new Intern(
                     "Gleezell",
-                    "glarclone@gmail.com",
+                    "gleezell@gmail.com",
+                    LocalDate.of(2024, Month.APRIL, 22)
+            );
+
+            Intern vina = new Intern(
+                    "Vina",
+                    "vina@gmail.com",
                     LocalDate.of(2024, Month.APRIL, 22)
             );
 
             internRepository.saveAll(
-                    List.of(gleezell)
+                    List.of(gleezell, vina)
             );
         };
     }

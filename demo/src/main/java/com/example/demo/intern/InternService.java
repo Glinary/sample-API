@@ -28,4 +28,13 @@ public class InternService {
         }
         internRepository.save(intern);
     }
+
+    public void deleteIntern(Long internId) {
+        boolean exists = internRepository.existsById(internId);
+        if (!exists) {
+            throw new IllegalStateException(
+                    "intern with id " + internId + " does not exist");
+        }
+        internRepository.deleteById(internId);
+    }
 }
