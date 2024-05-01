@@ -32,4 +32,13 @@ public class InternController {
     public void deleteIntern(@PathVariable("internId") Long internId) {
         internService.deleteIntern(internId);
     }
+
+    @PutMapping(path = "{internId}")
+    public void updateIntern(
+            @PathVariable("internId") Long internId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email
+    ) {
+        internService.updateIntern(internId, name, email);
+    }
 }
